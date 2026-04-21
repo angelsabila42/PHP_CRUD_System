@@ -13,11 +13,11 @@ public function connect(){
     try{
     $this->conn = new PDO("mysql:host=$this->servername;dbname=$this->dbname",
                             $this->username, $this->password);
-    //Set the PDO error mode to exception
-    $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //Set the PDO error mode to exception
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected Successfully";
     }catch(PDOException $e){
-   echo "Connection Failed: " . $e->getMessage();
+        echo "Connection Failed: " . $e->getMessage();
     }
     return $this->conn;
 
