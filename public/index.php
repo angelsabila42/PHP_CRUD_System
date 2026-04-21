@@ -15,10 +15,10 @@ $data = $student->readAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/style.css">
-    <title>Document</title>
+    <title>Student Management <Portal></Portal></title>
 </head>
 <body>
-    <h2>Students</h2>
+    <h2>Student List</h2>
 <table border="1">
     <tr>
         <th>ID</th>
@@ -38,8 +38,10 @@ $data = $student->readAll();
         <td><?php echo $row['phone_contact']; ?></td>
         <td><?php echo $row['reg_number']; ?></td>
         <td>
-            <a href="edit.php?id=<?php echo $row['id']; ?>" class="edit-btn">Edit</a> |
-            <a href="delete.php?id=<?php echo $row['id']; ?>" class = "delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
+            <div class = "container">
+                <a href="edit.php?id=<?php echo $row['id']; ?>" class="edit-btn">Edit</a> |
+                <a href="delete.php?id=<?php echo $row['id']; ?>" class = "delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
+            </div>
         
         </td>
     </tr>

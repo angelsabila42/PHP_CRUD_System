@@ -13,14 +13,14 @@
             <h1>Student Management Portal</h1>
             <form action="create.php" method = "POST">
     
-                <label for = "name">Name:</label> <input type = "text" name = "name" id = "name"><br><br>
-                <label for = "email">Email:</label> <input type = "text" name = "email" id = "email"><br><br>
-                <label for = "course">Course:</label> <input type = "text" name = "course" id = "course"><br><br>
-                <label for = "phone">Phone Number:</label> <input type = "text" name = "phone" id = "phone"><br><br>
-                <label for ="reg">Registration Number:</label><input type="text" name = "reg" id = "reg"><br><br>
+                <label for = "name">Name: </label> <input type = "text" name = "name" id = "name"><br><br>
+                <label for = "email">Email: </label> <input type = "text" name = "email" id = "email"><br><br>
+                <label for = "course">Course: </label> <input type = "text" name = "course" id = "course"><br><br>
+                <label for = "phone">Phone Number: </label> <input type = "text" name = "phone" id = "phone"><br><br>
+                <label for ="reg">Registration Number: </label> <input type="text" name = "reg" id = "reg"><br><br>
 
-                <input type="submit">
-    </form>
+                <input type="submit" class="submit-btn">
+            </form>
         </div>
     </div>
 </body>
