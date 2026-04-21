@@ -13,18 +13,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = validate($_POST['name']);
     $course = validate($_POST['course']);
     $email = validate($_POST['email']);
-    $phone = validate($_POST['phone_contact']);
-    $reg = validate($_POST['reg_number']);
+    $phone = validate($_POST['phone']);
+    $reg = validate($_POST['reg']);
 
     if (empty($name) || empty($course)) {
         $_SESSION['error'] = "Name & Course required";
-        header("Location: create.php");
+        header("Location: form.php");
         exit();
     }
 
     if (!empty($email) && !validateEmail($email)) {
         $_SESSION['error'] = "Invalid email";
-        header("Location: create.php");
+        header("Location: form.php");
         exit();
     }
 
@@ -37,13 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $student->create();
 
-        $_SESSION['success'] = "Student added";
+        $_SESSION['success'] = "New Student added";
         header("Location: index.php");
         exit();
 
     } catch (PDOException $e) {
-        $_SESSION['error'] = "Email or Reg Number already exists";
-        header("Location: create.php");
+        $_SESSION['error'] = "Email or Registration Number already exists";
+        header("Location: form.php");
         exit();
     }
 }

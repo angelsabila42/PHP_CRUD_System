@@ -35,7 +35,7 @@ class Student {
 
     // READ ALL
     public function readAll() {
-        $sql = "SELECT * FROM {$this->table} ORDER BY id DESC";
+        $sql = "SELECT * FROM {$this->table} ORDER BY id ASC";
         return $this->conn->query($sql);
     }
 
