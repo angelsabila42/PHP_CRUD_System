@@ -22,7 +22,7 @@ if ($isEdit && !empty($editData)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Submission</title>
-    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="../assets/style.css">
 </head>
 
 <body>
@@ -66,7 +66,7 @@ if ($isEdit && !empty($editData)) {
                      <?php if (!isset($errors['reg'])) echo "<br>"; ?>
                 <?php if (isset($errors['reg'])) echo "<span>{$errors['reg']}</span>". "<br> <br>"; ?>
 
-                <input type="submit" value="<?php echo $isEdit ? 'Update' : 'Submit'; ?>">
+                <input class="submit-btn" type="submit" value="<?php echo $isEdit ? 'Update' : 'Submit'; ?>">
             </form>
         </div>
     </div>
