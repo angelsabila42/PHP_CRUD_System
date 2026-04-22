@@ -17,17 +17,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     $student->id = $_GET['id'];
     $data = $student->readOne();
+    
+    // Redirect to form.php with prefilled data
+    $_SESSION['edit_data'] = [
+        'id' => $data['id'],
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'course' => $data['course'],
+        'phone' => $data['phone_contact'],
+        'reg' => $data['reg_number']
+    ];
+    header("Location: form.php?edit=true");
+    exit();
 }
 
-// POST
+// POST (from form.php)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $student->id = $_POST['id'];
-    $student->name = validate($_POST['name']);
-    $student->course = validate($_POST['course']);
-    $student->email = validate($_POST['email']);
-    $student->phone_contact = validate($_POST['phone_contact']);
-    $student->reg_number = validate($_POST['reg_number']);
+    
+    $formData = $_SESSION['form_data'] ?? $_POST;
+    unset($_SESSION['form_data']);
+    
+    $student->id = $formData['id'];
+    $student->name = validate($formData['name'] ?? '');
+    $student->course = validate($formData['course'] ?? '');
+    $student->email = validateEmail($formData['email'] ?? '');
+    $student->phone_contact = validate($formData['phone'] ?? '');
+    $student->reg_number = validate($formData['reg'] ?? '');
 
     $student->update();
 

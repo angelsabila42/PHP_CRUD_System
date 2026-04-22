@@ -7,6 +7,10 @@ require_once '../classes/Student.php';
 $db = (new Database())->connect();
 $student = new Student($db);
 $data = $student->readAll();
+
+// Check if table should be shown
+$showTable = isset($_GET['view']) && $_GET['view'] === 'students';
+$viewWelcomeMessage = !isset($_GET['view']);
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +22,25 @@ $data = $student->readAll();
     <title>Student Management <Portal></Portal></title>
 </head>
 <body>
-    <h2>Student List</h2>
+     <?php if ($viewWelcomeMessage): ?>
+        <div class="welcome-div">
+        <h1>Welcome to Student Management Portal</h1>
+        <div class="menu-options">
+            <a href="form.php" class="menu-btn">1. Add Student</a> <br>
+            <a href="index.php?view=students" class="menu-btn">2. View Existing Students</a> <br>
+            <a href="index.php?view=students#edit-section" class="menu-btn">3. Edit Student Details</a> <br>
+            <a href="index.php?view=students#delete-section" class="menu-btn">4. Delete a Student</a> <br>
+        </div>
+    </div>
+    <?php endif; ?>
+    
+        
+        
+    
+
+    <?php if ($showTable): ?>
+    <h2 id="edit-section">Student List</h2>
+   
 <table border="1">
     <tr>
         <th>ID</th>
@@ -27,7 +49,7 @@ $data = $student->readAll();
         <th>Course</th>
         <th>Phone Number</th>
         <th>Registration Number</th>
-        <th>Actions</th>
+        <th id="delete-section">Actions</th>
     </tr>
     <?php foreach ($data as $row) { ?>
     <tr>
@@ -42,10 +64,13 @@ $data = $student->readAll();
                 <a href="edit.php?id=<?php echo $row['id']; ?>" class="edit-btn">Edit</a> |
                 <a href="delete.php?id=<?php echo $row['id']; ?>" class = "delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
             </div>
-        
+
         </td>
     </tr>
     <?php } ?>
+</table> <br>
+ <a href="index.php" class="back-btn">Back to Menu</a>
+    <?php endif; ?>
 </body>
 
 <?php

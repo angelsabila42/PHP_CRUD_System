@@ -8,13 +8,16 @@ require_once '../helpers/validation.php';
 $db = (new Database())->connect();
 $student = new Student($db);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $name = validate($_POST['name']);
-    $course = validate($_POST['course']);
-    $email = validate($_POST['email']);
-    $phone = validate($_POST['phone']);
-    $reg = validate($_POST['reg']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST' || isset($_SESSION['form_data'])) {
+    
+    $formData = $_SESSION['form_data'] ?? $_POST;
+    unset($_SESSION['form_data']);
+    
+    $name = validate($formData['name'] ?? '');
+    $course = validate($formData['course'] ?? '');
+    $email = validate($formData['email'] ?? '');
+    $phone = validate($formData['phone'] ?? '');
+    $reg = validate($formData['reg'] ?? '');
 
     if (empty($name) || empty($course)) {
         $_SESSION['error'] = "Name & Course required";
