@@ -52,19 +52,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['email'] = 'Invalid email';
     }
 
+    
+
     $course = validate($formData['course'] ?? '');
     if (empty($course)) {
         $errors['course'] = 'Course is required';
     }
-
+    
     $phone = validate($formData['phone'] ?? '');
     if (empty($phone)) {
         $errors['phone'] = 'Phone required';
+    } elseif(preg_match('/^(07)[045678][0-9]{7}$/', $phone) === 0) {
+        $errors['phone'] = 'Invalid phone number, must start with 07 and 10 digits long';
     }
 
-    $reg = validate($formData['reg'] ?? '');
+       $reg = validate($formData['reg'] ?? '');
     if (empty($reg)) {
         $errors['reg'] = 'Reg number required';
+    } elseif(preg_match('/^2[0-5]\/U\/\d{4}(\/(PS|EVE))?$/', $reg) === 0) {
+        $errors['reg'] = 'Invalid reg number must be in format 2X/U/XXXX or 2X/U/XXXX/PS or 2X/U/XXXX/EVE';
     }
 
     if (!empty($errors)) {

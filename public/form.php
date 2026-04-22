@@ -6,8 +6,7 @@ unset($_SESSION['errors']);
 // Checks if this is edit mode
 $isEdit = isset($_GET['edit']) && $_GET['edit'] === 'true';
 $editData = $_SESSION['edit_data'] ?? [];
-unset($_SESSION['edit_data']);
-
+unset($_SESSION['edit_data']);    
 // getting saved form data
 $formData = $_SESSION['form_data'] ?? [];
 unset($_SESSION['form_data']);

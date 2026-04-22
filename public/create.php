@@ -19,9 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['name'] = 'Name is required';
     } elseif (strlen($name) < 3) {
         $errors['name'] = 'Minimum 3 characters';
-    } elseif(str_contains($name, preg_match('/(0-9)$/', $name))) {
-        $errors['name'] = 'No digits allowed';
-    }
+    } 
 
     $email = validate($formData['email'] ?? '');
     if (empty($email)) {
