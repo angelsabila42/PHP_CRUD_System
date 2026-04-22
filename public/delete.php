@@ -16,5 +16,5 @@ $student->id = $_GET['id'];
 $student->delete();
 
 $_SESSION['success'] = "Deleted!";
-header("Location: index.php");
+header("Location: index.php?view=students");
 exit();
