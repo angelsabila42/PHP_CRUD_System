@@ -18,8 +18,8 @@ $viewWelcomeMessage = !isset($_GET['view']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/style.css">
-    <title>Student Management <Portal></Portal></title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <title>Student Management</title>
 </head>
 <body>
      <?php if ($viewWelcomeMessage): ?>
@@ -33,10 +33,7 @@ $viewWelcomeMessage = !isset($_GET['view']);
         </div>
     </div>
     <?php endif; ?>
-    
-        
-        
-    
+  
 
     <?php if ($showTable): ?>
     <h2 id="edit-section">Student List</h2>
@@ -74,12 +71,14 @@ $viewWelcomeMessage = !isset($_GET['view']);
     <?php endif; ?>
 </body>
 
-<?php
-if (isset($_SESSION['success'])) {
-    echo $_SESSION['success'];
-    unset($_SESSION['success']);
-}
-?>
+<?php if (isset($_SESSION['success'])): ?>
+    <span class="success-message">
+        <?php 
+            echo htmlspecialchars($_SESSION['success']); 
+            unset($_SESSION['success']); 
+        ?>
+    </span>
+<?php endif; ?>
 </html>
 
 
