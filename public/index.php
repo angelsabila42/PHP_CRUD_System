@@ -29,7 +29,7 @@ $viewWelcomeMessage = !isset($_GET['view']);
             <a href="form.php" class="menu-btn">1. Add Student</a> <br>
             <a href="index.php?view=students" class="menu-btn">2. View Existing Students</a> <br>
             <a href="index.php?view=students#edit-section" class="menu-btn">3. Edit Student Details</a> <br>
-            <a href="index.php?view=students#delete-section" class="menu-btn">4. Delete a Student</a> <br>
+            <a href="index.php?view=students#delete-section" class="menu-btn">4. Delete a Student</a> <br> <br>
         </div>
     </div>
     <?php endif; ?>
