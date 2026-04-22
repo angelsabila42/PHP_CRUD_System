@@ -24,7 +24,7 @@ $viewWelcomeMessage = !isset($_GET['view']);
 <body>
      <?php if ($viewWelcomeMessage): ?>
         <div class="welcome-div">
-        <h1>Welcome to Student Management Portal</h1>
+        <h1>Welcome to the Student Management Portal</h1>
         <div class="menu-options">
             <a href="form.php" class="menu-btn">1. Add Student</a> <br>
             <a href="index.php?view=students" class="menu-btn">2. View Existing Students</a> <br>
@@ -51,6 +51,7 @@ $viewWelcomeMessage = !isset($_GET['view']);
         <th>Registration Number</th>
         <th id="delete-section">Actions</th>
     </tr>
+
     <?php foreach ($data as $row) { ?>
     <tr>
         <td><?php echo $row['id']; ?></td>
