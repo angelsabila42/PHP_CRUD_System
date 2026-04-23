@@ -73,6 +73,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['reg'] = 'Invalid reg number must be in format 2X/U/XXXX or 2X/U/XXXX/PS or 2X/U/XXXX/EVE';
     }
 
+    //Validation + Duplication Checks
+    if($student->existsForUpdate('email', $email, $formData['id'] )){
+        $errors['email'] = 'Email already exists';
+    }
+
+    if($student->existsForUpdate('reg_number', $reg, $formData['id'])){
+        $errors['reg'] = 'Registration number already exists';
+    }
+
+    if($student->existsForUpdate('phone_contact', $phone, $formData['id'])){
+        $errors['phone'] = 'Phone number already exists';
+    }
+
     if (!empty($errors)) {
         $_SESSION['errors'] = $errors;
         $_SESSION['form_data'] = $formData;

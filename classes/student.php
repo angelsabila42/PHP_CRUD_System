@@ -78,10 +78,19 @@ class Student {
         return $stmt->execute([':id' => $this->id]);
     }
 
+    //Checks whether data already exists in the database for a given field (used for duplication checks)
     public function exists($field, $value) {
         $sql = "SELECT COUNT(*) FROM {$this->table} WHERE {$field} = :value";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([':value' => $value]);
+
+        return $stmt->fetchColumn() > 0;
+    }
+
+    public function existsForUpdate($field, $value, $id) {
+        $sql = "SELECT COUNT(*) FROM {$this->table} WHERE {$field} = :value AND id != :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':value' => $value, ':id' => $id]);
 
         return $stmt->fetchColumn() > 0;
     }
