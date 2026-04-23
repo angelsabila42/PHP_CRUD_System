@@ -55,15 +55,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
+    if($student->exists('email', $email)){
+        $errors['email'] = 'Email already exists';
+    }
+
+    if($student->exists('reg_number', $reg)){
+        $errors['reg'] = 'Registration number already exists';
+    }
+
+    if($student->exists('phone_contact', $phone)){
+        $errors['phone'] = 'Phone number already exists';
+    }
+
     $student->name = $name;
     $student->course = $course;
     $student->email = $email;
     $student->phone_contact = $phone;
     $student->reg_number = $reg;
 
+    if(!empty($errors)) {
+        $_SESSION['errors'] = $errors;
+        $_SESSION['form_data'] = $formData;
+
+        header("Location: form.php");
+        exit();
+    }
+
     $student->create();
 
-    $_SESSION['success'] = "Student added";
+    $_SESSION['success'] = "Student added!";
     header("Location: index.php?view=students");
     exit();
 }

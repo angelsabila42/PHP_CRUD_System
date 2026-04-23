@@ -77,4 +77,12 @@ class Student {
 
         return $stmt->execute([':id' => $this->id]);
     }
+
+    public function exists($field, $value) {
+        $sql = "SELECT COUNT(*) FROM {$this->table} WHERE {$field} = :value";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':value' => $value]);
+
+        return $stmt->fetchColumn() > 0;
+    }
 }

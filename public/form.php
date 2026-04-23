@@ -40,31 +40,31 @@ if ($isEdit && !empty($editData)) {
                 <input type="text" name="name"
                     value="<?php echo htmlspecialchars($formData['name'] ?? ''); ?>"><br>
                      <?php if (!isset($errors['name'])) echo"<br>"; ?>
-                <?php if (isset($errors['name'])) echo "<span>{$errors['name']}</span>". "<br> <br>"; ?>
+                <?php if (isset($errors['name'])) echo "<span class = 'error_text' >{$errors['name']}</span>". "<br> <br>"; ?>
 
                 <label>Email:</label>
                 <input type="email" name="email"
                     value="<?php echo htmlspecialchars($formData['email'] ?? ''); ?>"><br> 
                      <?php if (!isset($errors['email'])) echo " <br>"; ?>
-                <?php if (isset($errors['email'])) echo "<span>{$errors['email']}</span>". "<br> <br>"; ?>
+                <?php if (isset($errors['email'])) echo "<span class = 'error_text' >{$errors['email']}</span>". "<br> <br>"; ?>
 
                 <label>Course:</label>
                 <input type="text" name="course"
                     value="<?php echo htmlspecialchars($formData['course'] ?? ''); ?>"><br>
                      <?php if (!isset($errors['course'])) echo  " <br>"; ?>
-                <?php if (isset($errors['course'])) echo "<span>{$errors['course']}</span>". "<br> <br>"; ?>
+                <?php if (isset($errors['course'])) echo "<span class = 'error_text' >{$errors['course']}</span>". "<br> <br>"; ?>
 
                 <label>Phone:</label>
                 <input type="text" name="phone"
                     value="<?php echo htmlspecialchars($formData['phone'] ?? ''); ?>"><br>
                      <?php if (!isset($errors['phone'])) echo  "<br>"; ?>
-                <?php if (isset($errors['phone'])) echo "<span>{$errors['phone']}</span>". "<br> <br>"; ?>
+                <?php if (isset($errors['phone'])) echo "<span class = 'error_text' >{$errors['phone']}</span>". "<br> <br>"; ?>
 
                 <label>Reg No:</label>
                 <input type="text" name="reg"
                     value="<?php echo htmlspecialchars($formData['reg'] ?? ''); ?>"><br>
                      <?php if (!isset($errors['reg'])) echo "<br>"; ?>
-                <?php if (isset($errors['reg'])) echo "<span>{$errors['reg']}</span>". "<br> <br>"; ?>
+                <?php if (isset($errors['reg'])) echo "<span class = 'error_text' >{$errors['reg']}</span>". "<br> <br>"; ?>
 
                 <input class="submit-btn" type="submit" value="<?php echo $isEdit ? 'Update' : 'Submit'; ?>">
             </form>

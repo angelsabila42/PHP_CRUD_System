@@ -204,7 +204,7 @@ input:focus {
 }
 
 .success-message {
-    display: inline-block;
+    display: block;
     padding: 10px 20px;
     background-color: #d4edda; /* Light green background */
     color: #155724;            /* Dark green text */
@@ -212,6 +212,18 @@ input:focus {
     border-radius: 6px;
     font-size: 0.9rem;
     font-weight: 500;
-    margin-left: 15px;
+    text-align: center;
     animation: fadeIn 0.5s ease-in-out;
+}
+
+.error_text {
+    display: block;
+    padding: 8px 12px;
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24;            /* Dark red text */
+    border: 1px solid #f5c6cb;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    margin-top: -10px;
+    margin-bottom: 20px;
 }

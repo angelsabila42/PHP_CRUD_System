@@ -37,6 +37,15 @@ $viewWelcomeMessage = !isset($_GET['view']);
 
     <?php if ($showTable): ?>
     <h2 id="edit-section">Student List</h2>
+
+    <?php if (isset($_SESSION['success'])): ?>
+    <span class="success-message">
+        <?php 
+            echo htmlspecialchars($_SESSION['success']); 
+            unset($_SESSION['success']); 
+        ?>
+    </span>
+<?php endif; ?>
    
 <table border="1">
     <tr>
@@ -71,14 +80,6 @@ $viewWelcomeMessage = !isset($_GET['view']);
     <?php endif; ?>
 </body>
 
-<?php if (isset($_SESSION['success'])): ?>
-    <span class="success-message">
-        <?php 
-            echo htmlspecialchars($_SESSION['success']); 
-            unset($_SESSION['success']); 
-        ?>
-    </span>
-<?php endif; ?>
 </html>
 
 
