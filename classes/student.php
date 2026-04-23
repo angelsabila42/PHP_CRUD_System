@@ -39,22 +39,6 @@ class Student {
         return $this->conn->query($sql);
     }
 
-    // CHECK DUPLICATE EMAIL
-    public function emailExists() {
-        $sql = "SELECT id FROM {$this->table} WHERE email = :email LIMIT 1";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([':email' => $this->email]);
-        return $stmt->fetch(PDO::FETCH_ASSOC) !== false;
-    }
-
-    // CHECK DUPLICATE REG NUMBER
-    public function regExists() {
-        $sql = "SELECT id FROM {$this->table} WHERE reg_number = :reg LIMIT 1";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([':reg' => $this->reg_number]);
-        return $stmt->fetch(PDO::FETCH_ASSOC) !== false;
-    }
-
     // READ ONE (by ID)
     public function readOne() {
         $sql = "SELECT * FROM {$this->table} WHERE id = :id LIMIT 1";
@@ -92,5 +76,22 @@ class Student {
         $stmt = $this->conn->prepare($sql);
 
         return $stmt->execute([':id' => $this->id]);
+    }
+
+    //Checks whether data already exists in the database for a given field (used for duplication checks)
+    public function exists($field, $value) {
+        $sql = "SELECT COUNT(*) FROM {$this->table} WHERE {$field} = :value";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':value' => $value]);
+
+        return $stmt->fetchColumn() > 0;
+    }
+
+    public function existsForUpdate($field, $value, $id) {
+        $sql = "SELECT COUNT(*) FROM {$this->table} WHERE {$field} = :value AND id != :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':value' => $value, ':id' => $id]);
+
+        return $stmt->fetchColumn() > 0;
     }
 }
