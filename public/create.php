@@ -47,14 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['reg'] = 'Invalid reg number must be in format 2X/U/XXXX or 2X/U/XXXX/PS or 2X/U/XXXX/EVE';
     }
 
-    if (!empty($errors)) {
-        $_SESSION['errors'] = $errors;
-        $_SESSION['form_data'] = $formData;
-
-        header("Location: form.php");
-        exit();
-    }
-
+    //Duplication Checks
     if($student->exists('email', $email)){
         $errors['email'] = 'Email already exists';
     }
@@ -67,19 +60,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['phone'] = 'Phone number already exists';
     }
 
-    $student->name = $name;
-    $student->course = $course;
-    $student->email = $email;
-    $student->phone_contact = $phone;
-    $student->reg_number = $reg;
-
-    if(!empty($errors)) {
+    if (!empty($errors)) {
         $_SESSION['errors'] = $errors;
         $_SESSION['form_data'] = $formData;
 
         header("Location: form.php");
         exit();
     }
+
+
+    $student->name = $name;
+    $student->course = $course;
+    $student->email = $email;
+    $student->phone_contact = $phone;
+    $student->reg_number = $reg;
+
 
     $student->create();
 
