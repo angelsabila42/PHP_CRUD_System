@@ -39,6 +39,22 @@ class Student {
         return $this->conn->query($sql);
     }
 
+    // CHECK DUPLICATE EMAIL
+    public function emailExists() {
+        $sql = "SELECT id FROM {$this->table} WHERE email = :email LIMIT 1";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':email' => $this->email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC) !== false;
+    }
+
+    // CHECK DUPLICATE REG NUMBER
+    public function regExists() {
+        $sql = "SELECT id FROM {$this->table} WHERE reg_number = :reg LIMIT 1";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':reg' => $this->reg_number]);
+        return $stmt->fetch(PDO::FETCH_ASSOC) !== false;
+    }
+
     // READ ONE (by ID)
     public function readOne() {
         $sql = "SELECT * FROM {$this->table} WHERE id = :id LIMIT 1";

@@ -73,6 +73,38 @@ th {
     color: #ffffff;
     border: 1px solid #008080;
     border-radius: 5px;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.submit-btn:hover {
+    background-color: #006666;
+}
+
+.centered-div label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    font-weight: bold;
+    color: #333;
+}
+
+.centered-div input[type="text"],
+.centered-div input[type="email"] {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.centered-div input[type="text"]:focus,
+.centered-div input[type="email"]:focus {
+    border-color: #008080;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0,128,128,0.2);
 }
 
 .centered-div{
