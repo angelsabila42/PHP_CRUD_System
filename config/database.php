@@ -1,10 +1,10 @@
 <?php
 class Database {
-    private $servername = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $dbname = "studentDB";
-    public $conn;
+    private String $servername = "localhost";
+    private String $username = "root";
+    private String $password = "";
+    private String $dbname = "studentDB";
+    public ?PDO $conn;
 
 //Create Connection
 public function connect(){

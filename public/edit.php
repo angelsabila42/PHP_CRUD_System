@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['reg'] = 'Invalid reg number must be in format 2X/U/XXXX or 2X/U/XXXX/PS or 2X/U/XXXX/EVE';
     }
 
-    //Validation + Duplication Checks
+    //Duplication Checks
     if($student->existsForUpdate('email', $email, $formData['id'] )){
         $errors['email'] = 'Email already exists';
     }
